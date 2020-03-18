@@ -10,8 +10,6 @@ const fetchUBS = async (url) => {
             
             data = osmData
 
-            console.log(data)
-
         }).catch((e) => console.log(e))
 
     }).catch((e) => {
