@@ -1,31 +1,31 @@
 import React from 'react'
-import { Map as LeafletMap, TileLayer, Marker, Popup } from 'react-leaflet';
+import { Map, TileLayer, Marker, Popup } from 'react-leaflet';
 
 function MapUbs(){
+
+    const mapa = {
+        lat: 51.505,
+        lng: -0.09,
+        zoom: 13,
+    }
+
+    const position = [mapa.lat, mapa.lng]
+
     return (
-      <LeafletMap
-        center={[50, 10]}
-        zoom={6}
-        maxZoom={10}
-        attributionControl={true}
-        zoomControl={true}
-        doubleClickZoom={true}
-        scrollWheelZoom={true}
-        dragging={true}
-        animate={true}
-        easeLinearity={0.35}
-      >
+        
+        <Map center={position} zoom={mapa.zoom} style={{height:"100%", width: "100%"}}>
         <TileLayer
-          url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
+          attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        <Marker position={[50, 10]}>
+        <Marker position={position}>
           <Popup>
-            Popup for any custom information.
+            A pretty CSS3 popup. <br /> Easily customizable.
           </Popup>
         </Marker>
-      </LeafletMap>
-    );
-  }
+      </Map>
+    )
 
+}
 
 export default MapUbs
