@@ -4,7 +4,7 @@ import './Styles.css'
 import telefone from './images/phone.png'
 
 import Checklist from './Checklist/Checklist'
-
+import MapUbs from './MapUbs/MapUbs'
 const PaginasApp = {
 
     Home: 1,
@@ -19,7 +19,7 @@ function MenuItem({nome, action, style}){
 
     return(
         <div className="MenuItem" onClick={action} style={style}>
-            <text>{nome}</text>
+            <p>{nome}</p>
         </div>
     )
 
@@ -47,7 +47,7 @@ function Footer(){
         <footer>
             <div className="DisqueSaude">
                 <img src={telefone} alt="Ícone de telefone"/>
-                <text>Disque Saúde - 136</text>
+                <p>Disque Saúde - 136</p>
             </div>
 
             <div className="FooterLinks">
@@ -75,7 +75,7 @@ function App() {
             case PaginasApp.Prevencao:
                 return //Prevencao
             case PaginasApp.Mapa:
-                return //Mapa
+                return <MapUbs/>
             case PaginasApp.FakeNews:
                 return //FakeNews
         }
