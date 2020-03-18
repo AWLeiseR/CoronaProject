@@ -78,6 +78,8 @@ function App() {
                 return <MapUbs/>
             case PaginasApp.FakeNews:
                 return //FakeNews
+            default:
+                return //Erro
         }
 
     }
