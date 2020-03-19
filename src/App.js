@@ -5,6 +5,11 @@ import telefone from './images/phone.png'
 
 import Checklist from './Checklist/Checklist'
 import MapUbs from './MapUbs/MapUbs'
+import Prevent from './Prevent/Prevent'
+import FakeNews from './FakeNews/FakeNews'
+import AboutCorona from './AboutCorona/AboutCorona'
+import ErroPag from './ErroPage/ErroPag'
+
 const PaginasApp = {
 
     Home: 1,
@@ -71,15 +76,15 @@ function App() {
             case PaginasApp.Home:
                 return <Checklist/>
             case PaginasApp.SobreADoenca:
-                return //Sobre
+                return <AboutCorona/>
             case PaginasApp.Prevencao:
-                return //Prevencao
+                return <Prevent/>
             case PaginasApp.Mapa:
                 return <MapUbs/>
             case PaginasApp.FakeNews:
-                return //FakeNews
+                return <FakeNews/>
             default:
-                return //Erro
+                return <ErroPag/>
         }
 
     }
