@@ -1,0 +1,93 @@
+.ChecklistContainer{
+
+    display: flex;
+    justify-content: center;
+
+    min-height: 100vh;
+
+    padding: 50px;
+
+    background: rgb(3,252,90);
+    background: linear-gradient(32deg, rgba(3,252,90,1) 0%, rgba(43,241,112,1) 35%, rgba(119,245,163,1) 100%);
+
+}
+
+.ChecklistInfoArea{
+
+    display: flex;
+    flex-direction: row;
+
+    background-color: white;
+    width: 95vw;
+    height: 70vh;
+
+    border-radius: 10px;
+
+    padding: 0px 20px 0px 20px;
+
+    -webkit-box-shadow: 0px 0px 22px 1px rgba(0,0,0,0.14);
+    -moz-box-shadow: 0px 0px 22px 1px rgba(0,0,0,0.14);
+    box-shadow: 0px 0px 22px 1px rgba(0,0,0,0.14);
+
+}
+
+.ResultadoArea{
+
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background-color: red;
+
+}
+
+.ResultadoArea h6{
+
+    bottom: 0;
+
+}
+
+.ButtonsArea{
+
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+
+    justify-content: space-around;
+    height: 100%;
+    width: 30vw;
+
+    overflow-y: scroll;
+
+}
+
+
+.CheckButton{
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    width: 150px;
+    height: 50px;
+
+    border-radius: 10px;
+
+    margin-top: 5px;
+    margin-bottom: 5px;
+
+    background-color: #FFFFFF;
+
+    -webkit-box-shadow: 0px 0px 10px rgba(0,0,0,0.14);
+    -moz-box-shadow: 0px 0px 10px rgba(0,0,0,0.14);
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.14);
+
+}
+
+.CheckButton:hover {
+
+    cursor: pointer;
+    background-color: #d4ffe7;
+
+}

@@ -23,7 +23,7 @@ header{
     font-family: 'Baloo 2', cursive;
     font-weight: 500;
     font-size: 20px;
-
+    
 }
 
 .MenuItem{
@@ -38,10 +38,8 @@ header{
 }
 
 .AppArea{
-
     width: 100vw;
     height: 84.5vh;
-
 }
 
 footer{
