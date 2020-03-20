@@ -2,6 +2,16 @@ import React, { useState, useCallback } from 'react'
 
 import './Styles.css'
 
+import alerta from '../images/alert.png'
+import aglomeracao from '../images/crowd.png'
+import medico from '../images/doctor.png'
+import casa from '../images/home-run.png'
+import face from '../images/identity.png'
+import mascara from '../images/medical-mask.png'
+import lavarmaos from '../images/soap.png'
+import contato from '../images/speak.png'
+import janela from '../images/window.png'
+
 const Sintomas = [
     {
         titulo: "Febre",
@@ -65,29 +75,6 @@ const Sintomas = [
     },
 ]
 
-function CheckButton({ name, action, isChecked, checkItem, peso, array, index, type }){
-
-    const largeButton = type === "large"? {width: "95%", height: "80px"}:null
-
-    const __onClick_check = () => {
-        checkItem(index)
-    }
-
-    if(!isChecked)
-        return(
-            <div className="CheckButton" onClick={__onClick_check} style={largeButton}>
-                {name}
-            </div>
-        )
-    else
-        return(
-            <div className="CheckButton check" onClick={__onClick_check} style={largeButton}>
-                {name}
-            </div>
-        )
-
-}
-
 const Resultado = {
     sem_evidencia: {
         main: "NÃO HÁ SINTOMAS QUE CARACTERIZAM A COVID-19",
@@ -111,10 +98,111 @@ const Resultado = {
     }
 }
 
+const Recomendacoes = {
+    tipo1: [
+        {
+            descricao: "Evite sair de casa",
+            imagem: casa
+        },
+        {
+            descricao: "Evite aglomerações",
+            imagem: aglomeracao
+        },
+        {
+            descricao: "Evite tocar a região do rosto",
+            imagem: face
+        },
+        {
+            descricao: "Lave bem as mãos",
+            imagem: lavarmaos
+        },
+        {
+            descricao: "Mantenha janelas abertas",
+            imagem: janela
+        }
+    ],
+    tipo2: [
+        {
+            descricao: "Fique alerta a novos sintomas",
+            imagem: alerta
+        },
+        {
+            descricao: "Fique em casa",
+            imagem: casa
+        },
+        {
+            descricao: "Mantenha janelas abertas",
+            imagem: janela
+        },
+        {
+            descricao: "Não vá em aglomerações",
+            imagem: aglomeracao
+        },
+        {
+            descricao: "Lave bem as mãos",
+            imagem: lavarmaos
+        },
+        {
+            descricao: "Evite contato com outras pessoas",
+            imagem: contato
+        }
+    ],
+    tipo3: [
+        {
+            descricao: "Busque ajuda médica",
+            imagem: medico
+        },
+        {
+            descricao: "Se possível, use máscara cirúrgica",
+            imagem: mascara
+        },
+        {
+            descricao: "Evite contato com outras pessoas",
+            imagem: contato
+        }
+    ]
+}
+
+function Recomendacao({descricao, imagem}){
+
+    return(
+        <div className="Recomendacao">
+            <img src={imagem} style={{width: "45px"}}/>
+            <div style={{height: "35px", display: "flex", alignItems: "center"}}>{descricao}</div>
+        </div>
+    )
+
+}
+
+function CheckButton({ name, action, isChecked, checkItem, peso, array, index, type }){
+
+    const largeButton = type === "large"? {width: "95%", height: "80px"}:null
+
+    const __onClick_check = () => {
+        checkItem(index)
+    }
+
+    if(!isChecked)
+        return(
+            <div className="CheckButton" onClick={__onClick_check} style={largeButton}>
+                {name}
+            </div>
+        )
+    else
+        return(
+            <div className="CheckButton check" onClick={__onClick_check} style={largeButton}>
+                {name}
+            </div>
+        )
+
+}
+
 function Checklist(){
 
     const [sintomasArray, setSintomasArray] = useState(Sintomas)
+
     const [resultado, setResultado] = useState(Resultado.sem_evidencia)
+    const [recomendacoes, setRecomendacoes] = useState(Recomendacoes.tipo1)
     const [background, setBackground] = useState("green")
 
     const [, setTick] = useState(0);
@@ -143,11 +231,10 @@ function Checklist(){
         const final = slicedArray.reduce(reducer)
         const countFinal = slicedArray.reduce(countReducer, 0)
 
-        console.log(countFinal)
-
         if(countFinal > 2 && array[8]){
             setResultado(Resultado.provavel)
             setBackground("red")
+            setRecomendacoes(Recomendacoes.tipo3)
             return
         }
 
@@ -155,6 +242,7 @@ function Checklist(){
             if((final && array[8] )|| array[9]){
                 setResultado(Resultado.provavel)
                 setBackground("red")
+                setRecomendacoes(Recomendacoes.tipo3)
                 return
             }
         }
@@ -163,11 +251,13 @@ function Checklist(){
             if(final && array[9]){
                 setResultado(Resultado.provavel)
                 setBackground("red")
+                setRecomendacoes(Recomendacoes.tipo3)
                 return
             }
             if((final && array[8])){
                 setResultado(Resultado.suspeito)
                 setBackground("yellow")
+                setRecomendacoes(Recomendacoes.tipo2)
                 return
             }
         } 
@@ -175,29 +265,34 @@ function Checklist(){
         if(countFinal > 1 && array[8]){
             setResultado(Resultado.suspeito)
             setBackground("yellow")
+            setRecomendacoes(Recomendacoes.tipo2)
             return
         }
 
         if(final && array[9]){
             setResultado(Resultado.provavel)
             setBackground("red")
+            setRecomendacoes(Recomendacoes.tipo3)
             return
         }
 
         if(final){
             setResultado(Resultado.se_sintomatico)
             setBackground("green")
+            setRecomendacoes(Recomendacoes.tipo1)
             return
         }
 
         if(array[9]){
             setResultado(Resultado.suspeito_assintomatico)
             setBackground("yellow")
+            setRecomendacoes(Recomendacoes.tipo2)
             return
         }
 
         setResultado(Resultado.sem_evidencia)
         setBackground("green")
+        setRecomendacoes(Recomendacoes.tipo1)
 
     }
 
@@ -252,7 +347,7 @@ function Checklist(){
 
                 <div className="ResultadoArea">
 
-                    <h3>Utilize a ferramenta de checklist ao lado do <i>Eu estou com Corona Vírus?</i> para descobrir em qual grupo de suspeita da doença você se enquadra</h3>
+                    <h3>Utilize a ferramenta de checklist <i>Eu estou com Corona Vírus?</i> para descobrir em qual grupo de suspeita da doença você se enquadra</h3>
                     <h4>O resultado é atualizado automaticamente enquanto você preenche os sintomas</h4>
 
                     <div className="horizontalSeparator"/>
@@ -263,13 +358,15 @@ function Checklist(){
                         <p>{resultado.sub}</p>
 
                         <p><i>recomendações</i></p>
-                        <div>
-
+                        <div className="RecomendacaoContainer">
+                            {recomendacoes.map( recomendacao => {
+                                return <Recomendacao descricao={recomendacao.descricao} imagem={recomendacao.imagem}/>
+                            })}
                         </div>
 
-                    </div>
+                        <h6>Os dados para a realização desse teste foram obtidos no site oficial do <a href="https://coronavirus.saude.gov.br/sobre-a-doenca#casossuspeito" target="_blank">Ministério da Saúde</a>. Este teste não substitui o exame laboratorial que confirma presença a doença.</h6>
 
-                    <h6>Os dados para a realização desse teste foram obtidos no site oficial do <a href="https://coronavirus.saude.gov.br/sobre-a-doenca#casossuspeito" target="_blank">Ministério da Saúde</a>. Este teste não substitui o exame laboratorial que confirma presença a doença.</h6>
+                    </div>
 
                 </div>
 

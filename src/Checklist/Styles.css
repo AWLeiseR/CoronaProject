@@ -40,7 +40,7 @@
 }
 
 .fadeIn{
-    animation: inAnim 2s ease;
+    animation: inAnim 1s ease;
 }
 
 .fadeOut{
@@ -93,6 +93,8 @@
     flex-direction: column;
     width: 100%;
     height: 100%;
+
+    overflow: scroll;
 
 }
 
@@ -161,4 +163,25 @@
     font-weight: bold;
 }
 
+.Recomendacao {
 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    margin-right: 10px;
+
+    font-size: 12px;
+    text-align: center;
+
+}
+
+.RecomendacaoContainer {
+
+    display: flex;
+    flex-direction: row;
+
+    overflow: scroll;
+
+}

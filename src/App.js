@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 import './Styles.css'
 import telefone from './images/phone.png'
+import virus from './images/virus.png'
 
 import Checklist from './Checklist/Checklist'
 import MapUbs from './MapUbs/MapUbs'
@@ -36,11 +37,14 @@ function Menu({ changePage, currentPage }){
 
     return(
         <header>
-            <MenuItem nome="Estou com Corona Vírus?" action={() => changePage(PaginasApp.Home)} style={currentPage===PaginasApp.Home? customStyle:null}/>
-            <MenuItem nome="Sobre a doença" action={() => changePage(PaginasApp.SobreADoenca)} style={currentPage===PaginasApp.SobreADoenca? customStyle:null}/>
-            <MenuItem nome="Prevenção" action={() => changePage(PaginasApp.Prevencao)} style={currentPage===PaginasApp.Prevencao? customStyle:null}/>
-            <MenuItem nome="Mapa de UBS" action={() => changePage(PaginasApp.Mapa)} style={currentPage===PaginasApp.Mapa? customStyle:null}/>
-            <MenuItem nome="Fake News" action={() => changePage(PaginasApp.FakeNews)} style={currentPage===PaginasApp.FakeNews? customStyle:null}/>
+            <div>
+                <MenuItem nome="Estou com Corona Vírus?" action={() => changePage(PaginasApp.Home)} style={currentPage===PaginasApp.Home? customStyle:null}/>
+                <MenuItem nome="Sobre a doença" action={() => changePage(PaginasApp.SobreADoenca)} style={currentPage===PaginasApp.SobreADoenca? customStyle:null}/>
+                <MenuItem nome="Prevenção" action={() => changePage(PaginasApp.Prevencao)} style={currentPage===PaginasApp.Prevencao? customStyle:null}/>
+                <MenuItem nome="Mapa de UBS" action={() => changePage(PaginasApp.Mapa)} style={currentPage===PaginasApp.Mapa? customStyle:null}/>
+                <MenuItem nome="Fake News" action={() => changePage(PaginasApp.FakeNews)} style={currentPage===PaginasApp.FakeNews? customStyle:null}/>
+            </div>
+            <img src={virus} alt="Desenho de um vírus" style={{width: "40px"}}/>            
         </header>
     )
 
