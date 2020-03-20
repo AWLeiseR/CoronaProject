@@ -32,7 +32,7 @@ function MenuItem({nome, action, style}){
 
 function Menu({ changePage, currentPage }){
 
-    const customStyle = {fontWeight: "bold"}
+    const customStyle = {fontWeight: "bold", textDecoration: "underline"}
 
     return(
         <header>

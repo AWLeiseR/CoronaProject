@@ -7,9 +7,65 @@
 
     padding: 50px;
 
-    background: rgb(3,252,90);
-    background: linear-gradient(32deg, rgba(3,252,90,1) 0%, rgba(43,241,112,1) 35%, rgba(119,245,163,1) 100%);
+}
 
+.Background{
+    position: absolute;
+    top: 0;
+    height: 100vh;
+    width: 100vw;
+
+}
+
+.BackgroundGreen{
+
+    z-index: -1;
+    background: rgb(196,255,217);
+    background: linear-gradient(32deg, rgba(196,255,217,1) 0%, rgba(221,255,233,1) 35%, rgba(181,255,207,1) 100%);
+}
+
+.BackgroundYellow{
+    z-index: -2;
+    background: rgb(233,174,88);
+    background: linear-gradient(32deg, rgba(233,174,88,1) 0%, rgba(238,189,138,1) 43%, rgba(238,175,68,1) 100%);
+
+}
+
+.BackgroundRed{
+
+    z-index: -3;
+    background: rgb(184,95,59);
+    background: linear-gradient(32deg, rgba(184,95,59,1) 0%, rgba(230,64,33,1) 43%, rgba(164,61,28,1) 100%);
+
+}
+
+.fadeIn{
+    animation: inAnim 2s ease;
+}
+
+.fadeOut{
+    animation: outAnim 1s ease;
+    animation-fill-mode: forwards;
+}
+
+@keyframes inAnim {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes outAnim {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
 }
 
 .ChecklistInfoArea{
@@ -35,14 +91,8 @@
 
     display: flex;
     flex-direction: column;
+    width: 100%;
     height: 100%;
-    background-color: red;
-
-}
-
-.ResultadoArea h6{
-
-    bottom: 0;
 
 }
 
@@ -54,7 +104,7 @@
 
     justify-content: space-around;
     height: 100%;
-    width: 30vw;
+    width: 35vw;
 
     overflow-y: scroll;
 
@@ -88,6 +138,27 @@
 .CheckButton:hover {
 
     cursor: pointer;
-    background-color: #d4ffe7;
+    background-color: #79c2a8;
 
 }
+
+.horizontalSeparator{
+
+    height: 1px;
+    width: 20%;
+    background-color: black;
+
+}
+
+.check{
+    background-color: #328568;
+    color: white;
+    font-weight: bold;
+}
+
+.check:hover{
+    color: white;
+    font-weight: bold;
+}
+
+

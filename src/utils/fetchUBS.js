@@ -30,13 +30,6 @@ const getUBSList = async (latitude, longitude) => {
 
     return new Promise(async resolve => {
 
-        let UBS1 = []
-        let UBS2 = []
-        let UBSLink1, UBSLink2
-
-        UBS1 = []
-        UBS2 = []
-
         await fetch(`https://nominatim.openstreetmap.org/reverse.php?lat=${latitude}&lon=${longitude}&format=json`,
             {method:"get", headers: {
             'User-Agent': 'Web/2.0',
@@ -47,8 +40,8 @@ const getUBSList = async (latitude, longitude) => {
                 const userCity = osmData.address.city
                 const userState = osmData.address.state
 
-                UBSLink1 = `https://nominatim.openstreetmap.org/search.php?q=unidade+básica+de+saúde+${userCity}+${userState}&format=json`
-                UBSLink2 = `https://nominatim.openstreetmap.org/search.php?q=ubs+${userCity}+${userState}&format=json`
+                const UBSLink1 = `https://nominatim.openstreetmap.org/search.php?q=unidade+básica+de+saúde+${userCity}+${userState}&format=json`
+                const UBSLink2 = `https://nominatim.openstreetmap.org/search.php?q=ubs+${userCity}+${userState}&format=json`
 
                 fetchUBS(UBSLink1).then((dataOne) => {
                     fetchUBS(UBSLink2).then((dataTwo) => {
