@@ -226,7 +226,7 @@ function Checklist(){
                 return accumulator
         }
 
-        const slicedArray = array.slice(2, 7)
+        const slicedArray = array.slice(2, 8)
 
         const final = slicedArray.reduce(reducer)
         const countFinal = slicedArray.reduce(countReducer, 0)
